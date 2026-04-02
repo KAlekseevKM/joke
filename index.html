@@ -11,28 +11,16 @@
 <p id="joke"></p>
 
 <script>
-const jokes = [
-  "Кассир: пакет нужен? Я: мне бы зарплату...",
-  "Этот чек подтверждает, что ты молодец 😎",
-  "Ошибка 404: мотивация не найдена",
-  "Ты только что купил это... и это было неизбежно",
-  "Скидка не найдена, но ты держись",
-  "Чек длиннее, чем моя жизнь",
-  "Ты богат... духовно",
-  "Покупка совершена. Сожаление загружается...",
-  "Система думает, что ты красавчик",
-  "Еще один чек - еще один шаг к банкротству 😄"
-];
-
-function getRandomJoke() {
-  return jokes[Math.floor(Math.random() * jokes.length)];
-}
-
-document.getElementById("joke").innerText = getRandomJoke();
-</script>
-
-const random = jokes[Math.floor(Math.random() * jokes.length)];
-document.getElementById("joke").innerText = random;
+fetch("https://official-joke-api.appspot.com/random_joke")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("joke").innerText =
+      data.setup + " - " + data.punchline;
+  })
+  .catch(() => {
+    document.getElementById("joke").innerText =
+      "Не удалось загрузить шутку 😢";
+  });
 </script>
 
 </body>
