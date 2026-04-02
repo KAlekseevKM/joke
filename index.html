@@ -12,31 +12,27 @@
 <button onclick="loadJoke()">Еще 😄</button>
 
 <script>
-const localJokes = [
-  "Ты красавчик 😎",
-  "Чек говорит: все под контролем (нет)",
-  "Ты купил это не зря... наверное",
-  "Жизнь - это чек без скидки",
-  "Система не ошибается. Ошибаешься ты 😄"
+const jokes = [
+  "Кассир: пакет нужен? Я: мне бы зарплату...",
+  "Жизнь - как чек: длинная и без скидок",
+  "Ты это купил... теперь живи с этим 😄",
+  "Ошибка: денег нет, но вы держитесь",
+  "Скидка была, но ты ее не заслужил",
+  "Этот чек - доказательство твоих решений",
+  "Покупка совершена. Сожаление загружается...",
+  "Ты богат... духовно 😎",
+  "Еще один чек - еще один шаг к успеху (или нет)",
+  "Ты точно это хотел купить?"
 ];
 
-function getLocalJoke() {
-  return localJokes[Math.floor(Math.random() * localJokes.length)];
+function getRandomJoke() {
+  return jokes[Math.floor(Math.random() * jokes.length)];
 }
 
 function loadJoke() {
-  fetch("https://official-joke-api.appspot.com/random_joke")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("joke").innerText =
-        data.setup + " 😂 " + data.punchline;
-    })
-    .catch(() => {
-      document.getElementById("joke").innerText = getLocalJoke();
-    });
+  document.getElementById("joke").innerText = getRandomJoke();
 }
 
-// при открытии страницы сразу загружаем шутку
 loadJoke();
 </script>
 </body>
