@@ -11,15 +11,26 @@
 <p id="joke"></p>
 
 <script>
+const localJokes = [
+  "Ты красавчик 😎",
+  "Чек говорит: все под контролем (нет)",
+  "Ты купил это не зря... наверное",
+  "Жизнь - это чек без скидки",
+  "Система не ошибается. Ошибаешься ты 😄"
+];
+
+function getLocalJoke() {
+  return localJokes[Math.floor(Math.random() * localJokes.length)];
+}
+
 fetch("https://official-joke-api.appspot.com/random_joke")
   .then(res => res.json())
   .then(data => {
-    document.getElementById("joke").innerText =
-      data.setup + " - " + data.punchline;
+    const joke = data.setup + " 😂 " + data.punchline;
+    document.getElementById("joke").innerText = joke;
   })
   .catch(() => {
-    document.getElementById("joke").innerText =
-      "Не удалось загрузить шутку 😢";
+    document.getElementById("joke").innerText = getLocalJoke();
   });
 </script>
 
