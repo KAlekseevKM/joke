@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Шутка</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif; margin-top:50px;">
+
+<h1>😂 Твоя шутка</h1>
+<p id="joke"></p>
+
+<script>
+const jokes = [
+  "Ты красавчик 😎",
+  "Этот чек сделал твой день",
+  "Случайная шутка уровня бог",
+  "Ты только что стал богаче на эмоции",
+  "Ошибка: слишком крутой пользователь"
+];
+
+const random = jokes[Math.floor(Math.random() * jokes.length)];
+document.getElementById("joke").innerText = random;
+</script>
+
+</body>
+</html>
